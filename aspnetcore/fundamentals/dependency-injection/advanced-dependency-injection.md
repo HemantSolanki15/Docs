@@ -20,7 +20,7 @@ The default extensions for the services container provided by ASP.NET Core provi
 
 The service container supports the registration of multiple implementations for a service. These can then resolved via DI as an `IEnumerable<T>` which includes all registered implementations.
 
-For example, in some cases it can be useful to register multiple concrete implementations for a given interface. This allows new implementations to be added, without the need to update dependent classes.
+For example, in some cases, it can be useful to register multiple concrete implementations for a given interface. This allows new implementations to be added, without the need to update dependent classes.
 
 Take the following interface for example:
 
@@ -65,7 +65,7 @@ public class LocationEnricher : IDataEnricher
 }
 ```
 
-This enricher is intended to process messages with an `EventType` of "FailedLogin". It will do this by enriching the message with the city of the user using the `IpAddress` from the message. The `CanEnrich` method inspects the incoming message and assesses if it meets the criteria for enrichment. In this case if the `EventType` is "FailedLogin" and there is an IpAddress present, it returns true. Th `Enrich` method performs the actual enrichment using a service to get the city using the `IpAddress` from the message.
+This enricher is intended to process messages with an `EventType` of "FailedLogin". It will do this by enriching the message with the city of the user using the `IpAddress` from the message. The `CanEnrich` method inspects the incoming message and assesses if it meets the criteria for enrichment. In this case, if the `EventType` is "FailedLogin" and there is an IpAddress present, it returns true. Th `Enrich` method performs the actual enrichment using a service to get the city using the `IpAddress` from the message.
 
 An example of another enricher:
 
@@ -126,7 +126,7 @@ This class will receive all registered enrichers via constructor injection. Thes
 
 Each matching enricher is then called in turn, passing in the message to be enriched.
 
-The advantage of this approach is that should need arise for a third enricher; it can be defined and registered with DI. With no changes to the `MessageDataProcessor` the new enricher will take effect and process messages which is can enrich.
+The advantage of this approach is that should need arise for a third enricher; it can be defined and registered with DI. With no changes to the `MessageDataProcessor` the new enricher will take effect and process messages which it can enrich.
 
 ## Registering generic types
 
